@@ -19,38 +19,41 @@ class FontManager {
   static final Color subtitleColor = AppColors.grey4B;
   static const Color subSubtitleColor = AppColors.grey;
 
-
   // ================== Text Styles ==================
 
-  // Splash title
-  static TextStyle splashTitle({
-    double fontSize = 40,
-    Color color = Colors.black,
-  }) => GoogleFonts.notoSans(
-    fontSize: fontSize.sp,
-    fontWeight: w800,
-    color: color,
-    height: 1.0,
-    letterSpacing: 0.sp,
-  );
-  // Big bold title
-  static TextStyle bigTitle({
-    double fontSize = 16,
-    Color color = Colors.black,
-  }) => GoogleFonts.notoSans(
-    fontSize: fontSize.sp,
-    fontWeight: FontWeight.w800,
-    color: color,
-  );
   // Title Text
-  static TextStyle titleText({Color color = mainTextColor}) => TextStyle(
-    fontFamily: inter,
-    fontSize: 22.sp,
-    fontWeight: w700,
+  static TextStyle titleText({Color color = mainTextColor}) =>
+      GoogleFonts.roboto(
+        fontSize: 22.sp,
+        fontWeight: w800,
+        color: color,
+        letterSpacing: 0.0,
+      );
+
+  //general text
+  static TextStyle generalText({
+    double fontSize = 18,
+    Color color = AppColors.hintTextColor,
+  }) => GoogleFonts.roboto(
+    fontSize: fontSize.sp,
+    fontWeight: FontWeight.w600,
     color: color,
     height: 1.0,
     letterSpacing: 0.0,
   );
+
+  // Hint Text
+  static TextStyle HintText({
+    double fontSize = 16,
+    Color color = AppColors.black,
+  }) => GoogleFonts.roboto(
+    fontSize: fontSize.sp,
+    fontWeight: w400,
+    color: color,
+    height: 1.0,
+    letterSpacing: 0.sp,
+  );
+
   // Subtitle Text
   static TextStyle subtitleText({
     double fontSize = 16,
@@ -64,142 +67,17 @@ class FontManager {
     letterSpacing: 0.0,
   );
 
-  // //Bold Title Text
-  // static TextStyle boldTitleText() => TextStyle(
-  //   fontFamily: "SegoeUI",
-  //   fontSize: 22.sp,
-  //   fontWeight: w700,
-  //   color: mainTextColor,
-  //   height: 1.0,
-  //   letterSpacing: 0.0,
-  // );
-
-  // General Text
-  static TextStyle generalText({
-    double fontSize = 14,
-    Color color = Colors.black,
-  }) => GoogleFonts.montserrat(
-    fontSize: fontSize.sp,
-    fontWeight: FontWeight.w500,
-    color: color,
-    height: 1.0,
-    letterSpacing: 0.0,
-  );
-
-  // static TextStyle boldSubtitleText() => GoogleFonts.montserrat(
-  //   fontSize: 14.sp,
-  //   fontWeight: w600,
-  //   color: mainTextColor,
-  //   height: 1.0,
-  //   letterSpacing: 0.0,
-  // );
-
-  // Sub-subtitle Text
+  
+  // Subtitle Text
   static TextStyle subSubtitleText({
-    double fontSize = 12,
-    color = AppColors.grey,
+    double fontSize = 14,
+    Color color = Colors.grey,
+    double height = 1,
   }) => GoogleFonts.montserrat(
     fontSize: fontSize.sp,
-    fontWeight: w400,
-    color: color,
-    height: 1.0,
-    letterSpacing: 0.0,
-  );
-
-  // Header Subtitle
-  static TextStyle headerSubtitleText({
-    double fontSize = 14,
-    Color color = Colors.black,
-  }) => GoogleFonts.montserrat(
-    fontSize: fontSize,
-    fontWeight: w600,
-    color: color,
-    height: 1.0,
-    letterSpacing: 0.0,
-  );
-
-  // Header Subtitle
-  static TextStyle regularText({
-    double fontSize = 14,
-    Color color = Colors.black,
-  }) => GoogleFonts.montserrat(
-    fontSize: fontSize,
-    fontWeight: w600,
-    color: color,
-    height: 1.0,
-    letterSpacing: 0.0,
-  );
-  // Body / Caption Text (default)
-  static TextStyle bodyText({Color color = mainTextColor}) => TextStyle(
-    fontFamily: inter,
-    fontSize: 14.sp,
-    fontWeight: w400,
-    color: color,
-    height: 1.0,
-    letterSpacing: 0.0,
-  );
-
-  // Button Text
-  static TextStyle buttonText() => TextStyle(
-    fontFamily: "SegoeUI",
-    fontSize: 16.sp,
-    fontWeight: w800,
-    color: Colors.white,
-    height: 1.0,
-    letterSpacing: 0.9,
-  );
-
-  // AppBar Text
-  static TextStyle appBarText({Color color = mainTextColor}) => TextStyle(
-    fontFamily: inter,
-    fontSize: 22.sp,
-    fontWeight: w800,
-
-    color: color,
-    height: 1.0,
-    letterSpacing: 0.0,
-  );
-  // Button Text (Regular, White)
-  static TextStyle buttonTextRegular() => TextStyle(
-    fontFamily: inter,
-    fontSize: 16.sp,
     fontWeight: FontWeight.w400,
-    color: AppColors.white,
-    height: 1.0,
-    letterSpacing: 0.0,
-  ); // White Button Text (Regular, 16px)
-  static TextStyle whiteButtonText() => TextStyle(
-    fontFamily: inter,
-    fontSize: 16.sp,
-    fontWeight: FontWeight.w400,
-    color: AppColors.white, // text color
-    height: 1.0,
-    letterSpacing: 0.0,
-  );
-
-  // ======= Details page ====//
-
-  // Header Subtitle
-  static TextStyle headlineText({
-    double fontSize = 16,
-    Color color = Colors.black,
-  }) => GoogleFonts.montserrat(
-    fontSize: fontSize,
-    fontWeight: w600,
     color: color,
-    height: 1.0,
+    height: height,
     letterSpacing: 0.0,
-  );
-  // Header Subtitle
-  static TextStyle boldHeading({
-    double fontSize = 24,
-    Color color = Colors.green,
-  }) => TextStyle(
-    fontFamily: 'SegoeUI',
-    fontSize: fontSize.sp,
-    fontWeight: w600,
-    color: color,
-    height: 1.0,
-    letterSpacing: 0.72.sp,
   );
 }

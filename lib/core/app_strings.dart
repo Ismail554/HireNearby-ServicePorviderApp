@@ -5,21 +5,16 @@ class AppStrings {
   // Welcome Screen
   static const String signUP = "Sign up";
   static const String signIN = "Sign in";
-   static const String worker = "I am a worker";
-    static const String client = "I am a client";
+  static const String worker = "I am a worker";
+  static const String client = "I am a client";
 
-  static const String landscaperSubtitle =
-      "Manage your clients, jobs, and payments effortlessly.";
-  static const String haveAccount = "Already have an account?";
-  static const String loginHere = "Login here";
-  // Sign Up / Account Creation
-  static const String createAccount = "Create an account";
-  static const String accountInformation = "Account Information";
-  static const String provideInfo =
-      "Provide your data to finish registration"; // Based on context
+  static const String passHint = "***********";
+  static const String condition =
+      "By pressing the Continue button, you agree to the Terms and Conditions of Hire nearby.";
 
+  static const String haveAccount = "Have an account?";
   // Input Labels/Placeholders
-  static const String fullName = "Full name";
+  static const String fullName = "Enter Full name";
   static const String fullNameHint = "e.g. John Doe";
   static const String email = "Email";
   static const String emailHint = "e.g. john@gmail.com";

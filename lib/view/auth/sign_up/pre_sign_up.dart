@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hirenearby/core/app_colors.dart';
 import 'package:hirenearby/core/app_spacing.dart';
 import 'package:hirenearby/core/app_strings.dart';
+import 'package:hirenearby/view/auth/sign_up/sign_up.dart';
 
 class PreSignUp extends StatelessWidget {
   const PreSignUp({super.key});
@@ -24,16 +25,17 @@ class PreSignUp extends StatelessWidget {
                 children: [
                   Center(child: Image.asset('assets/images/logo.png')),
                   AppSpacing.h96,
+                  // I am a worker button
                   OutlinedButton(
                     onPressed: () {},
                     child: Text(AppStrings.worker),
                   ),
-                  //Sign up button
+                  //I am a client button
                   FilledButton(
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => PreSignUp()),
+                        MaterialPageRoute(builder: (context) => SignUpScreen()),
                       );
                     },
                     child: Text(AppStrings.client),
