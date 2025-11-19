@@ -9,7 +9,8 @@ class LabeledTextField extends StatefulWidget {
   final bool isPassword;
   final TextEditingController? controller;
   final String? Function(String?)? validator;
-   final Function(String)? onChanged;
+  final Function(String)? onChanged;
+  final String? errorText;
 
   const LabeledTextField({
     super.key,
@@ -19,6 +20,7 @@ class LabeledTextField extends StatefulWidget {
     this.controller,
     this.validator,
     this.onChanged,
+    this.errorText,
   });
 
   @override
@@ -33,10 +35,7 @@ class _LabeledTextFieldState extends State<LabeledTextField> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          widget.label,
-          style: FontManager.generalText(),
-        ),
+        Text(widget.label, style: FontManager.generalText()),
         AppSpacing.h8,
 
         Container(
@@ -49,6 +48,7 @@ class _LabeledTextFieldState extends State<LabeledTextField> {
             controller: widget.controller,
             obscureText: widget.isPassword ? _obscure : false,
             textInputAction: TextInputAction.next,
+            onChanged: widget.onChanged,
             decoration: InputDecoration(
               border: InputBorder.none,
               hintText: widget.hint,
@@ -71,6 +71,17 @@ class _LabeledTextFieldState extends State<LabeledTextField> {
             ),
           ),
         ),
+        // Error message below field (without border error)
+        if (widget.errorText != null && widget.errorText!.isNotEmpty) ...[
+          AppSpacing.h4,
+          Padding(
+            padding: const EdgeInsets.only(left: 4.0),
+            child: Text(
+              widget.errorText!,
+              style: TextStyle(color: AppColors.red, fontSize: 12),
+            ),
+          ),
+        ],
       ],
     );
   }

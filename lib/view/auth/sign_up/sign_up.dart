@@ -4,8 +4,8 @@ import 'package:hirenearby/core/app_colors.dart';
 import 'package:hirenearby/core/app_spacing.dart';
 import 'package:hirenearby/core/app_strings.dart';
 import 'package:hirenearby/core/font_manager.dart';
-import 'package:hirenearby/validators/signup_validator.dart';
 import 'package:hirenearby/view/auth/auth_screen.dart';
+import 'package:hirenearby/validators/signup_validator.dart';
 import 'package:hirenearby/widget/labeled_text_field.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -23,90 +23,38 @@ class _SignUpScreenState extends State<SignUpScreen> {
       TextEditingController();
   bool _isChecked = false;
 
-  // Error messages for each field
+  // Validation error messages
   String? _nameError;
   String? _emailError;
   String? _passwordError;
   String? _confirmPasswordError;
+  String? _checkboxError;
 
-  // Validate individual fields - NOW WITH STRING PARAMETER
-  void _validateName(String value) {
+  void _handleSubmit() {
+    // Validate all fields
     setState(() {
       _nameError = SignupValidation.validateName(_nameController.text);
-    });
-  }
-
-  void _validateEmail(String value) {
-    setState(() {
       _emailError = SignupValidation.validateEmail(_emailController.text);
-    });
-  }
-
-  void _validatePassword(String value) {
-    setState(() {
       _passwordError = SignupValidation.validatePassword(
         _passwordController.text,
       );
-      // Also validate confirm password when password changes
-      if (_confirmPasswordController.text.isNotEmpty) {
-        _validateConfirmPassword(_confirmPasswordController.text);
-      }
-    });
-  }
-
-  void _validateConfirmPassword(String value) {
-    setState(() {
       _confirmPasswordError = SignupValidation.validateConfirmPassword(
         _confirmPasswordController.text,
         _passwordController.text,
       );
-    });
-  }
-
-  // Function to handle form submission
-  void _submitForm() {
-    // Validate all fields using bulk validation
-    final errors = SignupValidation.validateAllFields(
-      name: _nameController.text,
-      email: _emailController.text,
-      password: _passwordController.text,
-      confirmPassword: _confirmPasswordController.text,
-    );
-
-    // Update UI with errors
-    setState(() {
-      _nameError = errors['name'];
-      _emailError = errors['email'];
-      _passwordError = errors['password'];
-      _confirmPasswordError = errors['confirmPassword'];
+      _checkboxError = SignupValidation.validateCheckbox(_isChecked);
     });
 
-    // Check if any field has error
-    final hasFieldErrors =
-        _nameError != null ||
-        _emailError != null ||
-        _passwordError != null ||
-        _confirmPasswordError != null;
-
-    if (hasFieldErrors) {
-      return; // Don't proceed if there are field errors
+    // Check if all validations pass
+    if (_nameError == null &&
+        _emailError == null &&
+        _passwordError == null &&
+        _confirmPasswordError == null &&
+        _checkboxError == null) {
+      // All validations passed, proceed with sign up
+      // TODO: Implement sign up logic here
+      print('Sign up successful');
     }
-
-    // Check checkbox only on submit using validation class
-    final checkboxError = SignupValidation.validateCheckbox(_isChecked);
-    if (checkboxError != null) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text(checkboxError)));
-      return;
-    }
-
-    // If all validations pass
-    ScaffoldMessenger.of(
-      context,
-    ).showSnackBar(SnackBar(content: Text('Processing Data')));
-
-    // TODO: Add your signup API call here
   }
 
   @override
@@ -114,91 +62,145 @@ class _SignUpScreenState extends State<SignUpScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.bgColor,
-        automaticallyImplyLeading: false,
+        automaticallyImplyLeading: false, // for removing the back icon
       ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
+              spacing: 12.h,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(AppStrings.signUP, style: FontManager.titleText()),
                 AppSpacing.h20,
-
-                // Name Field with Error
-                _buildTextFieldWithError(
+                // Name
+                LabeledTextField(
                   controller: _nameController,
                   label: AppStrings.fullName,
                   hint: AppStrings.fullNameHint,
                   errorText: _nameError,
-                  onChanged:
-                      _validateName, // Now correctly passes String parameter
+                  onChanged: (value) {
+                    if (_nameError != null) {
+                      setState(() {
+                        _nameError = SignupValidation.validateName(value);
+                      });
+                    }
+                  },
                 ),
-
-                // Email Field with Error
-                _buildTextFieldWithError(
+                //email
+                LabeledTextField(
                   controller: _emailController,
                   label: AppStrings.email,
                   hint: AppStrings.emailHint,
                   errorText: _emailError,
-                  onChanged:
-                      _validateEmail, // Now correctly passes String parameter
+                  onChanged: (value) {
+                    if (_emailError != null) {
+                      setState(() {
+                        _emailError = SignupValidation.validateEmail(value);
+                      });
+                    }
+                  },
                 ),
-
-                // Password Field with Error
-                _buildTextFieldWithError(
+                //password
+                LabeledTextField(
                   controller: _passwordController,
                   label: AppStrings.password,
                   hint: AppStrings.passHint,
-                  errorText: _passwordError,
-                  onChanged:
-                      _validatePassword, // Now correctly passes String parameter
                   isPassword: true,
+                  errorText: _passwordError,
+                  onChanged: (value) {
+                    // Real-time password match validation
+                    if (_passwordError != null) {
+                      setState(() {
+                        _passwordError = SignupValidation.validatePassword(
+                          value,
+                        );
+                      });
+                    }
+                    // Check confirm password match in real-time
+                    if (_confirmPasswordController.text.isNotEmpty) {
+                      setState(() {
+                        _confirmPasswordError =
+                            SignupValidation.validateConfirmPassword(
+                              _confirmPasswordController.text,
+                              value,
+                            );
+                      });
+                    }
+                  },
                 ),
-
-                // Confirm Password Field with Error
-                _buildTextFieldWithError(
+                // Confirm password
+                LabeledTextField(
                   controller: _confirmPasswordController,
                   label: AppStrings.confirmPassword,
                   hint: AppStrings.passHint,
-                  errorText: _confirmPasswordError,
-                  onChanged:
-                      _validateConfirmPassword, // Now correctly passes String parameter
                   isPassword: true,
+                  errorText: _confirmPasswordError,
+                  onChanged: (value) {
+                    // Real-time password match validation
+                    if (_confirmPasswordError != null || value.isNotEmpty) {
+                      setState(() {
+                        _confirmPasswordError =
+                            SignupValidation.validateConfirmPassword(
+                              value,
+                              _passwordController.text,
+                            );
+                      });
+                    }
+                  },
                 ),
-
-                // Terms and Conditions Checkbox
-                Row(
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Checkbox(
-                      value: _isChecked,
-                      onChanged: (bool? newValue) {
-                        setState(() {
-                          _isChecked = newValue ?? false;
-                        });
-                      },
-                      activeColor: Colors.blue,
-                      checkColor: Colors.white,
+                    Row(
+                      children: [
+                        Checkbox(
+                          value: _isChecked,
+                          onChanged: (bool? newValue) {
+                            setState(() {
+                              _isChecked = newValue ?? false;
+                              if (_checkboxError != null) {
+                                _checkboxError =
+                                    SignupValidation.validateCheckbox(
+                                      _isChecked,
+                                    );
+                              }
+                            });
+                          },
+                          activeColor: Colors.blue, // Color when checked
+                          checkColor: Colors.white, // Color of the checkmark
+                          materialTapTargetSize:
+                              MaterialTapTargetSize.shrinkWrap,
+                        ),
+                        // Condition text
+                        Expanded(
+                          child: Text(
+                            AppStrings.condition,
+                            style: FontManager.subSubtitleText(),
+                            overflow: TextOverflow.clip,
+                          ),
+                        ),
+                      ],
                     ),
-                    Expanded(
-                      child: Text(
-                        AppStrings.condition,
-                        style: FontManager.subSubtitleText(),
+                    // Checkbox error message
+                    if (_checkboxError != null &&
+                        _checkboxError!.isNotEmpty) ...[
+                      Padding(
+                        padding: const EdgeInsets.only(left: 4.0),
+                        child: Text(
+                          _checkboxError!,
+                          style: TextStyle(color: AppColors.red, fontSize: 12),
+                        ),
                       ),
-                    ),
+                    ],
                   ],
                 ),
-
-                AppSpacing.h20,
-
-                // Submit Button
+                AppSpacing.h4,
                 FilledButton(
-                  onPressed: _submitForm,
+                  onPressed: _handleSubmit,
                   child: Text(AppStrings.signUP),
                 ),
-
-                // Already have account
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -208,10 +210,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                     AppSpacing.w4,
                     InkWell(
-                      onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => AuthScreen()),
-                      ),
+                      onTap: () => AuthScreen(),
                       child: Text(
                         AppStrings.signIN,
                         style: FontManager.subtitleText(color: AppColors.blue),
@@ -219,8 +218,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                   ],
                 ),
-
-                // Divider
                 Row(
                   children: [
                     Expanded(child: Divider(color: AppColors.greyD9)),
@@ -234,8 +231,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     Expanded(child: Divider(color: AppColors.greyD9)),
                   ],
                 ),
-
-                // Google Sign In
+                // Login with Google
                 OutlinedButton(
                   style: OutlinedButton.styleFrom(
                     side: BorderSide(color: AppColors.black, width: 1.r),
@@ -262,37 +258,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
           ),
         ),
       ),
-    );
-  }
-
-  // Helper widget to show text field with error
-  Widget _buildTextFieldWithError({
-    required TextEditingController controller,
-    required String label,
-    required String hint,
-    required String? errorText,
-    required Function(String) onChanged, // Correct type: Function(String)
-    bool isPassword = false,
-  }) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        LabeledTextField(
-          controller: controller,
-          label: label,
-          hint: hint,
-          isPassword: isPassword,
-          onChanged: onChanged, // This should now work correctly
-        ),
-        if (errorText != null) ...[
-          SizedBox(height: 4.h),
-          Text(
-            errorText,
-            style: TextStyle(color: Colors.red, fontSize: 12.sp),
-          ),
-        ],
-        SizedBox(height: 12.h),
-      ],
     );
   }
 }
