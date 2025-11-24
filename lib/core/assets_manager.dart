@@ -8,6 +8,7 @@ class ImageAssets {
   static const String appLogo = "$imagePath/appicon.png";
   static const String appLogoWhite = "$imagePath/logo.png";
   static const String profile = "$imagePath/bahar.jpg";
+  static const String authBg = "$imagePath/auth_bg.png";
 }
 
 class IconAssets {

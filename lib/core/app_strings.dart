@@ -68,5 +68,9 @@ class AppStrings {
   static const String otpAuthInstruction =
       "Enter the 4-digit code you recieved in your email address.";
 
+  // Home Screen
+  static const String findTrusted = "Find Trusted Local Help In Minutes";
+  static const String connectWithVerified = "Connect with verified professionals for all your home services needs";
+
 
 }

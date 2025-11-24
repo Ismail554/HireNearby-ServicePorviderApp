@@ -29,6 +29,14 @@ class FontManager {
         color: color,
         letterSpacing: 0.0,
       );
+        // Big Title Text
+  static TextStyle bigTitleText({Color color = Colors.white}) =>
+      GoogleFonts.roboto(
+        fontSize: 36.sp,
+        fontWeight: w800,
+        color: color,
+        letterSpacing: 0.0,
+      );
 
   //general text
   static TextStyle generalText({

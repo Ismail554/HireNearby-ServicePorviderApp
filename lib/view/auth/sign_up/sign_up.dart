@@ -201,7 +201,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 // sign up button
                 FilledButton(
                   onPressed: _handleSubmit,
-                  child: Text(AppStrings.signUP),
+                  child: Text(
+                    AppStrings.signUP,
+                    style: FontManager.buttonText(),
+                  ),
                 ),
                 // Already have an account? Sign in
                 Row(
