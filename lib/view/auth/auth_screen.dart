@@ -4,6 +4,7 @@ import 'package:hirenearby/core/app_colors.dart';
 import 'package:hirenearby/core/app_spacing.dart';
 import 'package:hirenearby/core/app_strings.dart';
 import 'package:hirenearby/core/font_manager.dart';
+import 'package:hirenearby/view/auth/login/login_screen.dart';
 import 'package:hirenearby/view/auth/sign_up/pre_sign_up.dart';
 
 class AuthScreen extends StatefulWidget {
@@ -34,7 +35,12 @@ class _AuthScreenState extends State<AuthScreen> {
                   Center(child: Image.asset('assets/images/logo.png')),
                   AppSpacing.h144,
                   OutlinedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => LoginScreen()),
+                      );
+                    },
                     child: Text(AppStrings.signIN),
                   ),
                   //Sign up button

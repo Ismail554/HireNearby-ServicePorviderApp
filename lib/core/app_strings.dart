@@ -48,4 +48,18 @@ class AppStrings {
   static const String accountCreatedMessage =
       "Your account has been created successfully.";
   static const String continueButton = "Continue";
+
+  // Login Screen
+  static const String enterEmail = "Enter email address";
+  static const String enterPassword = "Enter your password";
+  static const String forgotPassword = "Forgot Password?";
+  static const String dontHaveAccount = "Don't have an account?";
+
+  // Forgot Password Screen
+  static const String forgotPasswordTitle = "Forgot Password";  
+  static const String validEmail ="Enter valid email address.";
+  // Otp screen
+  static const String otpAuth = "OTP Authentication";
+  static const String otpAuthInstruction =
+      "Enter the 4-digit code you recieved in your email address.";
 }

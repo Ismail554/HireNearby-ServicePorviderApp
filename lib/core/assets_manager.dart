@@ -7,7 +7,7 @@ class ImageAssets {
   // ✅ General App Images
   static const String appLogo = "$imagePath/appicon.png";
   static const String appLogoWhite = "$imagePath/logo.png";
-   static const String profile = "$imagePath/bahar.jpg";
+  static const String profile = "$imagePath/bahar.jpg";
 }
 
 class IconAssets {
@@ -27,13 +27,13 @@ class IconAssets {
   static const String card2 = "$iconPath/card2.png";
   static const String product2 = "$iconPath/product2.png";
   static const String product1 = "$iconPath/product1.png";
-  static const String product3 = "$iconPath/product3.png";
+  static const String otpIcon = "$iconPath/otp.png";
+
 }
 
 class JsonAssets {
   static const String loading = "$jsonPath/success.json";
   static const String error = "$jsonPath/error.json";
-   
 }
 
 class SvgAssets {
@@ -45,4 +45,5 @@ class SvgAssets {
   static const String logo = "$svgPath/logo.svg";
   static const String profile = "$svgPath/profile.svg";
   static const String settings = "$svgPath/settings.svg";
+  static const String otpIcon = "$svgPath/otp.svg";
 }

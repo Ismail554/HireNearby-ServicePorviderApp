@@ -6,6 +6,7 @@ import 'package:hirenearby/core/app_strings.dart';
 import 'package:hirenearby/core/font_manager.dart';
 import 'package:hirenearby/view/auth/auth_screen.dart';
 import 'package:hirenearby/validators/signup_validator.dart';
+import 'package:hirenearby/view/auth/login/login_screen.dart';
 import 'package:hirenearby/widget/labeled_text_field.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -197,10 +198,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ],
                 ),
                 AppSpacing.h4,
+                // sign up button
                 FilledButton(
                   onPressed: _handleSubmit,
                   child: Text(AppStrings.signUP),
                 ),
+                // Already have an account? Sign in
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -209,8 +212,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       style: FontManager.subtitleText(),
                     ),
                     AppSpacing.w4,
+                    // Sign in text button
                     InkWell(
-                      onTap: () => AuthScreen(),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const LoginScreen(),
+                          ),
+                        );
+                      },
                       child: Text(
                         AppStrings.signIN,
                         style: FontManager.subtitleText(color: AppColors.blue),
@@ -218,6 +229,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                   ],
                 ),
+                // Bottom divider with text
                 Row(
                   children: [
                     Expanded(child: Divider(color: AppColors.greyD9)),
