@@ -45,7 +45,7 @@ class FontManager {
   // Hint Text
   static TextStyle HintText({
     double fontSize = 16,
-    Color color = AppColors.black,
+    Color color = AppColors.hintTextColor,
   }) => GoogleFonts.roboto(
     fontSize: fontSize.sp,
     fontWeight: w400,
@@ -67,7 +67,6 @@ class FontManager {
     letterSpacing: 0.0,
   );
 
-  
   // Subtitle Text
   static TextStyle subSubtitleText({
     double fontSize = 14,
@@ -76,6 +75,19 @@ class FontManager {
   }) => GoogleFonts.montserrat(
     fontSize: fontSize.sp,
     fontWeight: FontWeight.w400,
+    color: color,
+    height: height,
+    letterSpacing: 0.0,
+  );
+
+  // button Text
+  static TextStyle buttonText({
+    double fontSize = 16,
+    Color color = Colors.white,
+    double height = 1,
+  }) => GoogleFonts.roboto(
+    fontSize: fontSize.sp,
+    fontWeight: FontWeight.w700,
     color: color,
     height: height,
     letterSpacing: 0.0,

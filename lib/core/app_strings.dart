@@ -7,11 +7,14 @@ class AppStrings {
   static const String signIN = "Sign in";
   static const String worker = "I am a worker";
   static const String client = "I am a client";
+  static const String passResetSuccess =
+      "Your password has been reset successfully.";
+      static const String passResetCongInstruction = "You have successfully reset your password. Please use your new password when you’re logging in";
 
   static const String passHint = "***********";
   static const String condition =
       "By pressing the Continue button, you agree to the Terms and Conditions of Hire nearby.";
-
+ static const String goToLogin = "Go to Login";
   static const String haveAccount = "Have an account?";
   // Input Labels/Placeholders
   static const String fullName = "Enter Full name";
@@ -24,6 +27,7 @@ class AppStrings {
   static const String addressHint = "e.g. Los Angeles";
   static const String password = "Password";
   static const String confirmPassword = "Confirm Password";
+  static const String continueHint = "Continue";
 
   // Address Selection Screens
   static const String chooseYourAddress = "Choose your address";
@@ -42,6 +46,7 @@ class AppStrings {
   static const String otpResendPrompt = "OTP not Received?";
   static const String resendOtp = "Resend OTP";
   static const String verify = "Verify";
+  static const String resetPass = "Reset Password";
 
   // Success Screen
   static const String congratulations = "Congratulations!";
@@ -62,4 +67,6 @@ class AppStrings {
   static const String otpAuth = "OTP Authentication";
   static const String otpAuthInstruction =
       "Enter the 4-digit code you recieved in your email address.";
+
+
 }

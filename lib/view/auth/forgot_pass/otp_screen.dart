@@ -7,6 +7,8 @@ import 'package:hirenearby/core/app_spacing.dart';
 import 'package:hirenearby/core/app_strings.dart';
 import 'package:hirenearby/core/assets_manager.dart';
 import 'package:hirenearby/core/font_manager.dart';
+import 'package:hirenearby/view/auth/forgot_pass/reset_pass_screen.dart';
+import 'package:hirenearby/widget/labeled_text_field.dart';
 import 'package:hirenearby/widget/pinput.dart';
 
 class OtpScreen extends StatefulWidget {
@@ -88,6 +90,7 @@ class _OtpScreenState extends State<OtpScreen> {
                 Padding(
                   padding: EdgeInsets.all(16.0.w),
                   child: Column(
+                    spacing: 14.h,
                     children: [
                       SvgPicture.asset(SvgAssets.otpIcon, height: 121.h),
                       AppSpacing.h16,
@@ -124,7 +127,17 @@ class _OtpScreenState extends State<OtpScreen> {
                   ),
                 ),
                 AppSpacing.h12,
-                FilledButton(onPressed: () {}, child: Text(AppStrings.verify)),
+                FilledButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ResetPassScreen(),
+                      ),
+                    );
+                  },
+                  child: Text(AppStrings.verify),
+                ),
               ],
             ),
           ),
