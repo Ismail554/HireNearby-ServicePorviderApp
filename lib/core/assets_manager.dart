@@ -9,6 +9,16 @@ class ImageAssets {
   static const String appLogoWhite = "$imagePath/logo.png";
   static const String profile = "$imagePath/bahar.jpg";
   static const String authBg = "$imagePath/auth_bg.png";
+  static const String homeService1 = "$imagePath/homeService1.png";
+  static const String homeService2 = "$imagePath/homeService2.png";
+  static const String homeService3 = "$imagePath/homeService3.png";
+  static const String homeService4 = "$imagePath/homeService4.png";
+  static const String homeService5 = "$imagePath/homeService5.png";
+  static const String homeService6 = "$imagePath/homeService6.png";
+  static const String homeService7 = "$imagePath/homeService7.png";
+  static const String homeService8 = "$imagePath/homeService8.png";
+  static const String homeService9 = "$imagePath/homeService9.png";
+  static const String homeService10 = "$imagePath/homeService10.png";
 }
 
 class IconAssets {
@@ -29,7 +39,6 @@ class IconAssets {
   static const String product2 = "$iconPath/product2.png";
   static const String product1 = "$iconPath/product1.png";
   static const String otpIcon = "$iconPath/otp.png";
-
 }
 
 class JsonAssets {

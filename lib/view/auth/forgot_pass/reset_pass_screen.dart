@@ -4,7 +4,7 @@ import 'package:hirenearby/core/app_spacing.dart';
 import 'package:hirenearby/core/app_strings.dart';
 import 'package:hirenearby/core/font_manager.dart';
 import 'package:hirenearby/view/auth/forgot_pass/successful_screen.dart';
-import 'package:hirenearby/widget/labeled_text_field.dart';
+import 'package:hirenearby/custom_widget/labeled_text_field.dart';
 
 class ResetPassScreen extends StatelessWidget {
   const ResetPassScreen({super.key});

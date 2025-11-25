@@ -8,8 +8,8 @@ import 'package:hirenearby/core/app_strings.dart';
 import 'package:hirenearby/core/assets_manager.dart';
 import 'package:hirenearby/core/font_manager.dart';
 import 'package:hirenearby/view/auth/forgot_pass/reset_pass_screen.dart';
-import 'package:hirenearby/widget/labeled_text_field.dart';
-import 'package:hirenearby/widget/pinput.dart';
+import 'package:hirenearby/custom_widget/labeled_text_field.dart';
+import 'package:hirenearby/custom_widget/pinput.dart';
 
 class OtpScreen extends StatefulWidget {
   const OtpScreen({super.key});

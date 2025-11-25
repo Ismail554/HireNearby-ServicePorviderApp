@@ -7,7 +7,7 @@ import 'package:hirenearby/core/font_manager.dart';
 import 'package:hirenearby/view/auth/auth_screen.dart';
 import 'package:hirenearby/validators/signup_validator.dart';
 import 'package:hirenearby/view/auth/login/login_screen.dart';
-import 'package:hirenearby/widget/labeled_text_field.dart';
+import 'package:hirenearby/custom_widget/labeled_text_field.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
