@@ -5,6 +5,7 @@ import 'package:hirenearby/core/app_spacing.dart';
 import 'package:hirenearby/core/app_strings.dart';
 import 'package:hirenearby/core/assets_manager.dart';
 import 'package:hirenearby/core/font_manager.dart';
+import 'package:hirenearby/view/client_user/home/custom_service_list.dart';
 import 'package:hirenearby/widget/common_screen_setup.dart';
 
 class ClientHomeScreen extends StatefulWidget {
@@ -18,13 +19,16 @@ class _ClientHomeScreenState extends State<ClientHomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.bgColor,
       body: Column(
+        crossAxisAlignment: .center,
+        spacing: 12.h,
         children: [
           Stack(
             children: [
               // Full background SVG
               SizedBox(
-                height: 500.h,
+                height: 460.h,
                 width: double.maxFinite,
                 child: Image.asset(ImageAssets.authBg, fit: BoxFit.fill),
               ),
@@ -33,29 +37,21 @@ class _ClientHomeScreenState extends State<ClientHomeScreen> {
                 child: Column(
                   spacing: 12.h,
                   children: [
-                    AppBar(
-                      backgroundColor: Colors.transparent,
-                      automaticallyImplyLeading:
-                          false, // for removing the back icon
-                      elevation: 1,
-                      title: Padding(
-                        padding: EdgeInsets.symmetric(
-                          vertical: 32.h,
-                          horizontal: 2.w,
+                    //Top bar
+                    AppSpacing.h12,
+                    Row(
+                      mainAxisAlignment: .spaceBetween,
+                      children: [
+                        Image.asset(ImageAssets.appLogoWhite, height: 40.h),
+                        Icon(
+                          Icons.notifications,
+                          size: 28.h,
+                          color: Colors.white,
                         ),
-                        child: Row(
-                          mainAxisAlignment: .spaceBetween,
-                          children: [
-                            Image.asset(ImageAssets.appLogoWhite, height: 40.h),
-                            Icon(
-                              Icons.notifications,
-                              size: 28.h,
-                              color: Colors.white,
-                            ),
-                          ],
-                        ),
-                      ),
+                      ],
                     ),
+
+                    // end of top bar
                     AppSpacing.h20,
                     Center(
                       child: Text(
@@ -82,11 +78,12 @@ class _ClientHomeScreenState extends State<ClientHomeScreen> {
                         borderRadius: BorderRadius.circular(8.r),
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: EdgeInsets.all(8.0),
                         child: Column(
                           children: [
                             TextField(
                               decoration: InputDecoration(
+                                fillColor: AppColors.white,
                                 // border:1,
                                 // focusedBorder: OutlineInputBorder(),
                                 contentPadding: EdgeInsets.symmetric(
@@ -96,10 +93,12 @@ class _ClientHomeScreenState extends State<ClientHomeScreen> {
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(12.r),
                                   borderSide: BorderSide(
-                                    color: Colors.grey[300]!,
-                                    width: 1.5,
+                                    color: Colors.grey[200]!,
+                                    width: 1.w,
                                   ),
                                 ),
+                                filled: true,
+
                                 hintText: 'Search for services',
                                 prefixIcon: Icon(Icons.search, size: 28.h),
                               ),
@@ -117,7 +116,7 @@ class _ClientHomeScreenState extends State<ClientHomeScreen> {
                                 size: 24.h,
                                 color: Colors.white,
                               ),
-                              label: Text(           
+                              label: Text(
                                 "Search",
                                 style: FontManager.buttonText(),
                               ),
@@ -132,6 +131,18 @@ class _ClientHomeScreenState extends State<ClientHomeScreen> {
               ),
             ],
           ),
+
+          //end of top stack
+          // Rest of the home screen content goes here
+          Text("Popular Services", style: FontManager.titleText(fontSize: 30)),
+          Text(
+            "Browse by category to find the right professional for you",
+            style: FontManager.generalText(),
+            textAlign: .center,
+          ),
+          AppSpacing.h10,
+          // catagory grid view
+          ServicesListOptimized(),
         ],
       ),
     );

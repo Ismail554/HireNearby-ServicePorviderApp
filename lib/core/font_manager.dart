@@ -22,14 +22,16 @@ class FontManager {
   // ================== Text Styles ==================
 
   // Title Text
-  static TextStyle titleText({Color color = mainTextColor}) =>
-      GoogleFonts.roboto(
-        fontSize: 22.sp,
-        fontWeight: w800,
-        color: color,
-        letterSpacing: 0.0,
-      );
-        // Big Title Text
+  static TextStyle titleText({
+    Color color = mainTextColor,
+    double fontSize = 22,
+  }) => GoogleFonts.roboto(
+    fontSize: fontSize.sp,
+    fontWeight: w800,
+    color: color,
+    letterSpacing: 0.0,
+  );
+  // Big Title Text
   static TextStyle bigTitleText({Color color = Colors.white}) =>
       GoogleFonts.roboto(
         fontSize: 36.sp,
@@ -44,7 +46,7 @@ class FontManager {
     Color color = AppColors.hintTextColor,
   }) => GoogleFonts.roboto(
     fontSize: fontSize.sp,
-    fontWeight: FontWeight.w600,
+    fontWeight: FontWeight.w400,
     color: color,
     height: 1.0,
     letterSpacing: 0.0,
