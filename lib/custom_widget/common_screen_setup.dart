@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hirenearby/core/app_colors.dart';
+import 'package:hirenearby/core/font_manager.dart';
 
 class CommonScreenSetup extends StatelessWidget {
   final String? title;
@@ -20,15 +21,15 @@ class CommonScreenSetup extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: AppColors.bgColor,
         automaticallyImplyLeading: showBackButton,
-        title: title != null ? Text(title!) : null,
+        title: title != null
+            ? Text(title!, style: FontManager.titleText())
+            : null,
+        centerTitle: true,
         elevation: 0,
       ),
       body: SafeArea(
         child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: child,
-          ),
+          child: Padding(padding: const EdgeInsets.all(16.0), child: child),
         ),
       ),
     );

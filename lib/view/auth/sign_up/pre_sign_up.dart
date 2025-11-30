@@ -20,18 +20,23 @@ class PreSignUp extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(16.0),
               child: Column(
-                spacing: 24.h,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Center(child: Image.asset('assets/images/logo.png')),
                   AppSpacing.h96,
                   // I am a worker button
                   OutlinedButton(
+                    style: OutlinedButton.styleFrom(
+                      fixedSize: Size(double.maxFinite, 52.h),
+                    ),
                     onPressed: () {},
                     child: Text(AppStrings.worker),
                   ),
                   //I am a client button
                   FilledButton(
+                    style: FilledButton.styleFrom(
+                      fixedSize: Size(double.maxFinite, 52.h),
+                    ),
                     onPressed: () {
                       Navigator.push(
                         context,

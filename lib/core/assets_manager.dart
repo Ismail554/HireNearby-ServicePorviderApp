@@ -4,10 +4,10 @@ const String jsonPath = "assets/json";
 const String svgPath = "assets/svg";
 
 class ImageAssets {
+  static const String profile = "$imagePath/profile_circle.png";
   // ✅ General App Images
   static const String appLogo = "$imagePath/appicon.png";
   static const String appLogoWhite = "$imagePath/logo.png";
-  static const String profile = "$imagePath/bahar.jpg";
   static const String authBg = "$imagePath/auth_bg.png";
   static const String homeService1 = "$imagePath/homeService1.png";
   static const String homeService2 = "$imagePath/homeService2.png";
@@ -22,6 +22,7 @@ class ImageAssets {
 }
 
 class IconAssets {
+  static const String verfied = "$iconPath/verified.png";
   // ✅ General App Images
   static const String appLogo = "$iconPath/appicon.png";
   static const String appLogoWhite = "$iconPath/applogo.png";

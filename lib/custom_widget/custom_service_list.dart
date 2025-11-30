@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
 class ServicesListOptimized extends StatelessWidget {
-  static const List<ServiceItem> services = [
-    ServiceItem('Handyman', Icons.build, Color(0xFFDDE9FF)),
-    ServiceItem('Cleaning', Icons.cleaning_services, Color(0xFFD6F6FF)),
-    ServiceItem('Moving', Icons.local_shipping, Color(0xFFFFE1E6)),
-    ServiceItem('Home Care', Icons.home, Color(0xFFE3F6D9)),
-  ];
+  final List<ServiceItem> services;
+  final Function(ServiceItem)? onServiceTap;
 
-  const ServicesListOptimized({super.key});
+  const ServicesListOptimized({
+    super.key,
+    required this.services,
+    this.onServiceTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,12 @@ class ServicesListOptimized extends StatelessWidget {
             ),
             itemBuilder: (context, index) {
               final service = services[index];
-              return _ServiceCard(service: service);
+              return _ServiceCard(
+                service: service,
+                onTap: onServiceTap != null
+                    ? () => onServiceTap!(service)
+                    : null,
+              );
             },
           ),
         ],
@@ -40,34 +45,47 @@ class ServicesListOptimized extends StatelessWidget {
 
 class _ServiceCard extends StatelessWidget {
   final ServiceItem service;
+  final VoidCallback? onTap;
 
-  const _ServiceCard({required this.service});
+  const _ServiceCard({required this.service, this.onTap});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: onTap,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: Colors.grey.shade300),
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              color: service.bgColor,
-              shape: BoxShape.circle,
-            ),
-            child: Icon(service.icon, size: 28, color: Colors.black54),
+        splashColor: Colors.blue.withOpacity(0.1),
+        highlightColor: Colors.blue.withOpacity(0.05),
+        child: Container(
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(12),
+            border: Border.all(color: Colors.grey.shade300),
           ),
-          const SizedBox(height: 10),
-          Text(
-            service.name,
-            style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: service.bgColor,
+                  shape: BoxShape.circle,
+                ),
+                child: Icon(service.icon, size: 28, color: Colors.black54),
+              ),
+              const SizedBox(height: 10),
+              Text(
+                service.name,
+                style: const TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }

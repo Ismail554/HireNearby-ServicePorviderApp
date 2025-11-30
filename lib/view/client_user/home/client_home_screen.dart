@@ -7,7 +7,7 @@ import 'package:hirenearby/core/assets_manager.dart';
 import 'package:hirenearby/core/font_manager.dart';
 import 'package:hirenearby/custom_widget/custom_service_list.dart';
 import 'package:hirenearby/custom_widget/adaptive_photo_grid.dart';
-import 'package:hirenearby/custom_widget/common_screen_setup.dart';
+import 'package:hirenearby/view/client_user/home/directory_screen.dart';
 
 class ClientHomeScreen extends StatefulWidget {
   const ClientHomeScreen({super.key});
@@ -17,6 +17,13 @@ class ClientHomeScreen extends StatefulWidget {
 }
 
 class _ClientHomeScreenState extends State<ClientHomeScreen> {
+  static const List<ServiceItem> services = [
+    ServiceItem('Handyman', Icons.build, Color(0xFFDDE9FF)),
+    ServiceItem('Cleaning', Icons.cleaning_services, Color(0xFFD6F6FF)),
+    ServiceItem('Moving', Icons.local_shipping, Color(0xFFFFE1E6)),
+    ServiceItem('Home Care', Icons.home, Color(0xFFE3F6D9)),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -155,7 +162,18 @@ class _ClientHomeScreenState extends State<ClientHomeScreen> {
                   ),
                   AppSpacing.h10,
                   // catagory grid view
-                  ServicesListOptimized(),
+                  ServicesListOptimized(
+                    services: services,
+                    onServiceTap: (service) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (BuildContext context) =>
+                              DirectoryScreen(title: service.name),
+                        ),
+                      );
+                    },
+                  ),
                   // Explore
                   Text(
                     "Explore Pros Worker",
@@ -203,7 +221,6 @@ class _ClientHomeScreenState extends State<ClientHomeScreen> {
                       ImageAssets.homeService9,
                       ImageAssets.homeService3,
                       ImageAssets.homeService4,
-
                       ImageAssets.homeService6,
                       ImageAssets.homeService1,
                       ImageAssets.homeService10,
