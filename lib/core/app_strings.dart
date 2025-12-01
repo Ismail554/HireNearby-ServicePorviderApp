@@ -29,6 +29,9 @@ class AppStrings {
   static const String confirmPassword = "Confirm Password";
   static const String continueHint = "Continue";
 
+  // Contractor Profile
+  static const String contractorProfile = "Contractor Profile";
+
   // Address Selection Screens
   static const String chooseYourAddress = "Choose your address";
   static const String addressPermissionsPrompt =

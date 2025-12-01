@@ -19,7 +19,9 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
       showBackButton: true,
       child: Column(
         children: [
-          CommonDirectoryCard(),
+          CommonDirectoryCard(
+      
+          ),
           CommonDirectoryCard(),
           CommonDirectoryCard(),
           CommonDirectoryCard(),

@@ -4,7 +4,7 @@ import 'package:hirenearby/core/app_colors.dart';
 import 'package:hirenearby/core/app_spacing.dart';
 import 'package:hirenearby/core/app_strings.dart';
 import 'package:hirenearby/core/font_manager.dart';
-import 'package:hirenearby/view/auth/auth_screen.dart';
+
 import 'package:hirenearby/view/auth/forgot_pass/forgot_password.dart';
 import 'package:hirenearby/view/auth/sign_up/pre_sign_up.dart';
 import 'package:hirenearby/view/client_user/client_main_screen.dart';

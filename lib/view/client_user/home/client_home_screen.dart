@@ -7,7 +7,7 @@ import 'package:hirenearby/core/assets_manager.dart';
 import 'package:hirenearby/core/font_manager.dart';
 import 'package:hirenearby/custom_widget/custom_service_list.dart';
 import 'package:hirenearby/custom_widget/adaptive_photo_grid.dart';
-import 'package:hirenearby/view/client_user/home/directory_screen.dart';
+import 'package:hirenearby/view/client_user/home/directory/directory_screen.dart';
 
 class ClientHomeScreen extends StatefulWidget {
   const ClientHomeScreen({super.key});
