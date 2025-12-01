@@ -9,13 +9,6 @@ import 'package:hirenearby/custom_widget/tag_display.dart';
 import 'package:hirenearby/custom_widget/universal_card.dart';
 import 'package:hirenearby/view/client_user/home/directory/custom_Avaibility_card.dart';
 
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:hirenearby/core/app_strings.dart';
-import 'package:hirenearby/core/assets_manager.dart';
-import 'package:hirenearby/custom_widget/common_screen_setup.dart';
-import 'package:hirenearby/view/client_user/home/directory/custom_Avaibility_card.dart';
-
 class ContractorProfileScreen extends StatefulWidget {
   const ContractorProfileScreen({super.key});
 
@@ -138,8 +131,134 @@ class _ContractorProfileScreenState extends State<ContractorProfileScreen> {
       child: AvailabilityCard(availability: availability),
     );
   }
-  
-  _reviewSection() {}
+
+  /// ---------------- REVIEW SECTION ----------------
+  Widget _reviewSection() {
+    // Dummy review data
+    final List<Map<String, dynamic>> reviews = [
+      {
+        'name': 'Alex Thompson',
+        'profileImage': ImageAssets.profile,
+        'rating': 3,
+        'date': 'Nov 10, 2025',
+        'review':
+            'Execellent service! Very professional and thorough. Highly recommend!',
+      },
+      {
+        'name': 'Mingulo Megas',
+        'profileImage': ImageAssets.profile,
+        'rating': 5,
+        'date': 'Nov 10, 2025',
+        'review':
+            'Execellent service! Very professional and thorough. Highly recommend!',
+      },
+    ];
+
+    return Container(
+      padding: EdgeInsets.all(12.w),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12.r),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text('Reviews', style: FontManager.titleText()),
+          SizedBox(height: 12.h),
+          ...reviews.map((review) => _buildReviewCard(review)),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildReviewCard(Map<String, dynamic> review) {
+    return Container(
+      margin: EdgeInsets.only(bottom: 12.h),
+      padding: EdgeInsets.all(12.w),
+      decoration: BoxDecoration(
+        color: Colors.grey.shade50,
+        borderRadius: BorderRadius.circular(8.r),
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Profile Picture
+          ClipOval(
+            child: Image.asset(
+              review['profileImage'],
+              width: 50,
+              height: 50,
+              fit: BoxFit.cover,
+              errorBuilder: (context, error, stackTrace) {
+                return Container(
+                  width: 50,
+                  height: 50,
+                  color: Colors.grey.shade300,
+                  child: Icon(
+                    Icons.person,
+                    size: 25.sp,
+                    color: Colors.grey.shade600,
+                  ),
+                );
+              },
+            ),
+          ),
+        
+          AppSpacing.w12,
+          // Review Content
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Name, Rating, Date Row
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
+                      child: Text(
+                        review['name'],
+                        style: TextStyle(
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black87,
+                        ),
+                      ),
+                    ),
+                    Text(
+                      review['date'],
+                      style: TextStyle(
+                        fontSize: 12.sp,
+                        color: Colors.grey.shade600,
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 6.h),
+                // Stars Rating
+                Row(
+                  children: List.generate(
+                    review['rating'],
+                    (index) =>
+                        Icon(Icons.star, size: 16.sp, color: Colors.blue),
+                  ),
+                ),
+                SizedBox(height: 8.h),
+                // Review Text
+                Text(
+                  review['review'],
+                  style: TextStyle(
+                    fontSize: 14.sp,
+                    color: Colors.grey.shade700,
+                    height: 1.4,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 }
 
 Widget _skillTag() {
@@ -191,77 +310,6 @@ Widget _thirdRow() {
           child: UniversalCard(label: "Experience", value: "3 Years"),
         ),
       ],
-    ),
-  );
-}
-
-/// -----------------------
-/// TOP NAME CARD
-/// -----------------------
-Widget _topNameCard() {
-  return Container(
-    padding: EdgeInsets.all(12.w),
-    decoration: BoxDecoration(
-      color: Colors.white,
-      borderRadius: BorderRadius.circular(12.r),
-    ),
-
-    child: Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Row(
-        spacing: 4.w,
-        children: [
-          CircleAvatar(child: Image.asset(ImageAssets.profile), radius: 30.r),
-
-          SizedBox(width: 10.w),
-
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                children: [
-                  Text(
-                    "Mika Watt",
-                    style: TextStyle(
-                      fontSize: 18.sp,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  SizedBox(width: 6.w),
-                  Image.asset(IconAssets.verfied, width: 16.w, height: 16.h),
-                ],
-              ),
-
-              SizedBox(height: 4.h),
-
-              Row(
-                children: [
-                  Icon(Icons.work_outline, color: Colors.grey, size: 16.sp),
-                  SizedBox(width: 4.w),
-                  Text(
-                    "Plumber Service",
-                    style: TextStyle(color: Colors.grey, fontSize: 14.sp),
-                  ),
-
-                  SizedBox(width: 12.w),
-
-                  Icon(
-                    Icons.location_on_outlined,
-                    color: Colors.grey,
-                    size: 16.sp,
-                  ),
-                  SizedBox(width: 4.w),
-
-                  Text(
-                    "America",
-                    style: TextStyle(color: Colors.grey, fontSize: 14.sp),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ],
-      ),
     ),
   );
 }

@@ -4,6 +4,7 @@ import 'package:hirenearby/core/app_colors.dart';
 import 'package:hirenearby/core/assets_manager.dart';
 import 'package:hirenearby/core/app_spacing.dart';
 import 'package:hirenearby/view/client_user/home/directory/contractor_profile_screen.dart';
+import 'package:hirenearby/view/client_user/home/directory/select_time_screen.dart';
 
 class CommonDirectoryCard extends StatelessWidget {
   const CommonDirectoryCard({super.key});
@@ -234,7 +235,14 @@ class CommonDirectoryCard extends StatelessWidget {
                       backgroundColor: Colors.deepOrange,
                       fixedSize: Size(126.w, 36.h),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SelectTimeScreen(),
+                        ),
+                      );
+                    },
                     child: Text(
                       "Book Now",
                       style: TextStyle(color: Colors.white),
