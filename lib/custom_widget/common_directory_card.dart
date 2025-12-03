@@ -5,7 +5,7 @@ import 'package:hirenearby/core/assets_manager.dart';
 import 'package:hirenearby/core/app_spacing.dart';
 import 'package:hirenearby/custom_widget/row_pair_buttons.dart';
 import 'package:hirenearby/view/client_user/home/directory/contractor_profile_screen.dart';
-import 'package:hirenearby/view/client_user/home/directory/select_time_screen.dart';
+import 'package:hirenearby/view/client_user/home/directory/select_date_screen.dart';
 
 class CommonDirectoryCard extends StatelessWidget {
   const CommonDirectoryCard({super.key});
@@ -69,7 +69,8 @@ class CommonDirectoryCard extends StatelessWidget {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          SizedBox(width: 6.w),
+
+                          AppSpacing.w6,
                           Image.asset(
                             IconAssets.verfied,
                             width: 16.w,
@@ -78,7 +79,7 @@ class CommonDirectoryCard extends StatelessWidget {
                         ],
                       ),
 
-                      SizedBox(height: 4.h),
+                      AppSpacing.h4,
 
                       /// Profession + Location
                       Row(
@@ -88,7 +89,8 @@ class CommonDirectoryCard extends StatelessWidget {
                             color: Colors.grey,
                             size: 16.sp,
                           ),
-                          SizedBox(width: 4.w),
+
+                          AppSpacing.w4,
                           Text(
                             "Plumber Service",
                             style: TextStyle(
@@ -96,13 +98,14 @@ class CommonDirectoryCard extends StatelessWidget {
                               fontSize: 14.sp,
                             ),
                           ),
-                          SizedBox(width: 12.w),
+
+                          AppSpacing.w12,
                           Icon(
                             Icons.location_on_outlined,
                             color: Colors.grey,
                             size: 16.sp,
                           ),
-                          SizedBox(width: 4.w),
+                          AppSpacing.w4,
                           Text(
                             "America",
                             style: TextStyle(
@@ -113,7 +116,7 @@ class CommonDirectoryCard extends StatelessWidget {
                         ],
                       ),
 
-                      SizedBox(height: 4.h),
+                      AppSpacing.h4,
 
                       /// Experience
                       Row(
@@ -134,7 +137,7 @@ class CommonDirectoryCard extends StatelessWidget {
                         ],
                       ),
 
-                      SizedBox(height: 4.h),
+                      AppSpacing.h4,
 
                       /// Rating + Price
                       Row(
@@ -147,7 +150,7 @@ class CommonDirectoryCard extends StatelessWidget {
                                 size: 18.sp,
                                 color: Colors.amber,
                               ),
-                              SizedBox(width: 4.w),
+                              AppSpacing.w4,
                               Text(
                                 "4.9 (128)",
                                 style: TextStyle(
@@ -181,7 +184,7 @@ class CommonDirectoryCard extends StatelessWidget {
                         ],
                       ),
 
-                      SizedBox(height: 4.h),
+                      AppSpacing.h4,
 
                       /// Jobs Completed
                       Row(
@@ -191,7 +194,7 @@ class CommonDirectoryCard extends StatelessWidget {
                             size: 17.sp,
                             color: Colors.black87,
                           ),
-                          SizedBox(width: 4.w),
+                          AppSpacing.w4,
                           Text(
                             "321",
                             style: TextStyle(
@@ -199,7 +202,7 @@ class CommonDirectoryCard extends StatelessWidget {
                               fontWeight: FontWeight.w500,
                             ),
                           ),
-                          SizedBox(width: 6.w),
+                          AppSpacing.w6,
                           Text(
                             "Jobs Completed",
                             style: TextStyle(
@@ -217,7 +220,7 @@ class CommonDirectoryCard extends StatelessWidget {
 
             AppSpacing.h16,
 
-// Pair buttons
+            // Pair buttons
             RowPairButtons(
               leftText: "Chat",
               rightText: "Book Now",
@@ -225,7 +228,7 @@ class CommonDirectoryCard extends StatelessWidget {
               onRightTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => SelectTimeScreen()),
+                  MaterialPageRoute(builder: (context) => SelectDateScreen()),
                 );
               },
             ),

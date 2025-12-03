@@ -6,11 +6,12 @@ import 'package:hirenearby/core/app_strings.dart';
 import 'package:hirenearby/core/assets_manager.dart';
 import 'package:hirenearby/core/font_manager.dart';
 import 'package:hirenearby/custom_widget/common_screen_setup.dart';
+import 'package:hirenearby/custom_widget/profile_info_card.dart';
 import 'package:hirenearby/custom_widget/row_pair_buttons.dart';
 import 'package:hirenearby/custom_widget/tag_display.dart';
 import 'package:hirenearby/custom_widget/universal_card.dart';
 import 'package:hirenearby/view/client_user/home/directory/custom_Avaibility_card.dart';
-import 'package:hirenearby/view/client_user/home/directory/select_time_screen.dart';
+import 'package:hirenearby/view/client_user/home/directory/select_date_screen.dart';
 
 class ContractorProfileScreen extends StatefulWidget {
   const ContractorProfileScreen({super.key});
@@ -33,7 +34,11 @@ class _ContractorProfileScreenState extends State<ContractorProfileScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // 1st name card
-            _topNameCard(),
+            ProfileInfoCard(
+              name: 'Md. Tanzim',
+              profession: 'Sigma Designer',
+              location: 'Pabna, Bangladesh',
+            ),
             // Second availability card
             _availabilityCard(),
             // Third row
@@ -51,7 +56,7 @@ class _ContractorProfileScreenState extends State<ContractorProfileScreen> {
               onRightTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => SelectTimeScreen()),
+                  MaterialPageRoute(builder: (context) => SelectDateScreen()),
                 );
               },
             ),
@@ -62,73 +67,74 @@ class _ContractorProfileScreenState extends State<ContractorProfileScreen> {
   }
 
   /// ---------------- TOP NAME CARD ----------------
-  Widget _topNameCard() {
-    return Container(
-      padding: EdgeInsets.all(12.w),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(12.r),
-      ),
 
-      child: Row(
-        children: [
-          CircleAvatar(
-            radius: 32.r,
-            backgroundColor: Colors.grey.shade200,
-            child: Image.asset(ImageAssets.profile, fit: BoxFit.fill),
-          ),
+  // Widget _topNameCard() {
+  //   return Container(
+  //     padding: EdgeInsets.all(12.w),
+  //     decoration: BoxDecoration(
+  //       color: Colors.white,
+  //       borderRadius: BorderRadius.circular(12.r),
+  //     ),
 
-          AppSpacing.w12,
+  //     child: Row(
+  //       children: [
+  //         CircleAvatar(
+  //           radius: 32.r,
+  //           backgroundColor: Colors.grey.shade200,
+  //           child: Image.asset(ImageAssets.profile, fit: BoxFit.fill),
+  //         ),
 
-          // Name, profession, location
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                children: [
-                  Text(
-                    "Mika Watt",
-                    style: TextStyle(
-                      fontSize: 18.sp,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                  SizedBox(width: 6.w),
-                  Image.asset(IconAssets.verfied, width: 16.w, height: 16.h),
-                ],
-              ),
-              SizedBox(height: 4.h),
-              Row(
-                children: [
-                  Icon(Icons.work_outline, color: Colors.grey, size: 16.sp),
-                  SizedBox(width: 4.w),
-                  Text(
-                    "Plumber Service",
-                    style: TextStyle(color: Colors.grey, fontSize: 14.sp),
-                  ),
-                ],
-              ),
-              SizedBox(height: 2.h),
-              Row(
-                children: [
-                  Icon(
-                    Icons.location_on_outlined,
-                    color: Colors.grey,
-                    size: 16.sp,
-                  ),
-                  SizedBox(width: 4.w),
-                  Text(
-                    "America",
-                    style: TextStyle(color: Colors.grey, fontSize: 14.sp),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
+  //         AppSpacing.w12,
+
+  //         // Name, profession, location
+  //         Column(
+  //           crossAxisAlignment: CrossAxisAlignment.start,
+  //           children: [
+  //             Row(
+  //               children: [
+  //                 Text(
+  //                   "Mika Watt",
+  //                   style: TextStyle(
+  //                     fontSize: 18.sp,
+  //                     fontWeight: FontWeight.w700,
+  //                   ),
+  //                 ),
+  //                 SizedBox(width: 6.w),
+  //                 Image.asset(IconAssets.verfied, width: 16.w, height: 16.h),
+  //               ],
+  //             ),
+  //             SizedBox(height: 4.h),
+  //             Row(
+  //               children: [
+  //                 Icon(Icons.work_outline, color: Colors.grey, size: 16.sp),
+  //                 SizedBox(width: 4.w),
+  //                 Text(
+  //                   "Plumber Service",
+  //                   style: TextStyle(color: Colors.grey, fontSize: 14.sp),
+  //                 ),
+  //               ],
+  //             ),
+  //             SizedBox(height: 2.h),
+  //             Row(
+  //               children: [
+  //                 Icon(
+  //                   Icons.location_on_outlined,
+  //                   color: Colors.grey,
+  //                   size: 16.sp,
+  //                 ),
+  //                 SizedBox(width: 4.w),
+  //                 Text(
+  //                   "America",
+  //                   style: TextStyle(color: Colors.grey, fontSize: 14.sp),
+  //                 ),
+  //               ],
+  //             ),
+  //           ],
+  //         ),
+  //       ],
+  //     ),
+  //   );
+  // }
 
   /// ---------------- AVAILABILITY CARD ----------------
   Widget _availabilityCard() {
@@ -173,13 +179,6 @@ class _ContractorProfileScreenState extends State<ContractorProfileScreen> {
     return Container(
       padding: EdgeInsets.all(12.w),
       decoration: BoxDecoration(
-        boxShadow: [
-          BoxShadow(
-            blurRadius: 0.8,
-            color: AppColors.amberTransparent,
-            offset: Offset(0, 5),
-          ),
-        ],
         color: Colors.white,
         borderRadius: BorderRadius.circular(12.r),
       ),
@@ -208,6 +207,13 @@ class _ContractorProfileScreenState extends State<ContractorProfileScreen> {
       margin: EdgeInsets.only(bottom: 12.h),
       padding: EdgeInsets.all(12.w),
       decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            blurRadius: 0.5,
+            color: AppColors.greyD4,
+            offset: Offset(0, 1.2),
+          ),
+        ],
         color: Colors.grey.shade50,
         borderRadius: BorderRadius.circular(8.r),
       ),
