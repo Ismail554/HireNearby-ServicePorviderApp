@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hirenearby/core/app_colors.dart';
 import 'package:hirenearby/core/assets_manager.dart';
 import 'package:hirenearby/core/app_spacing.dart';
+import 'package:hirenearby/custom_widget/row_pair_buttons.dart';
 import 'package:hirenearby/view/client_user/home/directory/contractor_profile_screen.dart';
 import 'package:hirenearby/view/client_user/home/directory/select_time_screen.dart';
 
@@ -216,40 +217,17 @@ class CommonDirectoryCard extends StatelessWidget {
 
             AppSpacing.h16,
 
-            /// ---------- BUTTONS ----------
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10.0),
-              child: Row(
-                mainAxisAlignment: .spaceBetween,
-                children: [
-                  OutlinedButton(
-                    style: OutlinedButton.styleFrom(
-                      side: BorderSide(color: Colors.black),
-                      fixedSize: Size(126.w, 36.h),
-                    ),
-                    onPressed: () {},
-                    child: Text("Chat", style: TextStyle(color: Colors.black)),
-                  ),
-                  FilledButton(
-                    style: FilledButton.styleFrom(
-                      backgroundColor: Colors.deepOrange,
-                      fixedSize: Size(126.w, 36.h),
-                    ),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => SelectTimeScreen(),
-                        ),
-                      );
-                    },
-                    child: Text(
-                      "Book Now",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ),
-                ],
-              ),
+// Pair buttons
+            RowPairButtons(
+              leftText: "Chat",
+              rightText: "Book Now",
+              onLeftTap: () {},
+              onRightTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SelectTimeScreen()),
+                );
+              },
             ),
           ],
         ),
