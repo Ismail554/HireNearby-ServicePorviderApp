@@ -23,6 +23,8 @@ class ImageAssets {
 
 class IconAssets {
   static const String verfied = "$iconPath/verified.png";
+    static const String success = "$iconPath/success.png";
+ 
   // ✅ General App Images
   static const String appLogo = "$iconPath/appicon.png";
   static const String appLogoWhite = "$iconPath/applogo.png";
@@ -34,7 +36,7 @@ class IconAssets {
   static const String send = "$iconPath/send.png";
   static const String shop = "$iconPath/shop.png";
   static const String security = "$iconPath/security.png";
-  static const String success = "$iconPath/success.png";
+
   static const String card1 = "$iconPath/card1.png";
   static const String card2 = "$iconPath/card2.png";
   static const String product2 = "$iconPath/product2.png";

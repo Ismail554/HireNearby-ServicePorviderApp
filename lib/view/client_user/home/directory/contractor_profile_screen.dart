@@ -183,7 +183,7 @@ class _ContractorProfileScreenState extends State<ContractorProfileScreen> {
         borderRadius: BorderRadius.circular(12.r),
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: .start,
         children: [
           Row(
             mainAxisAlignment: .spaceBetween,

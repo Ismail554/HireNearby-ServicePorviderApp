@@ -7,12 +7,17 @@ class ProfileInfoCard extends StatelessWidget {
   final String name;
   final String profession;
   final String location;
+  final Color backgroundColor;
+  final bool showBorder;
 
   const ProfileInfoCard({
     super.key,
+    this.showBorder = false,
     required this.name,
     required this.profession,
     required this.location,
+
+    this.backgroundColor = Colors.white,
   });
 
   @override
@@ -20,7 +25,8 @@ class ProfileInfoCard extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(12.w),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: backgroundColor,
+        border: showBorder ? Border.all(width: 1.0, color: Colors.grey) : null,
         borderRadius: BorderRadius.circular(12.r),
       ),
       child: Row(

@@ -85,7 +85,7 @@ class _ClientHomeScreenState extends State<ClientHomeScreen> {
                       // spacing: 12.h,
                       children: [
                         //Top bar
-                        AppSpacing.h12,
+                        AppSpacing.h36,
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -118,7 +118,7 @@ class _ClientHomeScreenState extends State<ClientHomeScreen> {
                             color: AppColors.white,
                           ),
                         ),
-                       AppSpacing.h12,
+                        AppSpacing.h12,
                         // top search box
                         Container(
                           padding: EdgeInsets.symmetric(
