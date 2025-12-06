@@ -92,38 +92,41 @@ class _MyBookingsScreenState extends State<MyBookingsScreen>
             offset: Offset(0, 2),
           ),
         ],
-        border: Border.all(color: Colors.grey.shade200),
+        border: Border.all(color: Colors.grey.shade100),
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: .start,
         children: [
           // Profile and details row
           Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: .start,
             children: [
               // Profile Picture
               CircleAvatar(
-                radius: 30.r,
-                backgroundColor: Colors.grey.shade200,
+                radius: 32.r,
+                backgroundColor: Colors.grey.shade100,
                 backgroundImage: AssetImage(ImageAssets.profile),
                 onBackgroundImageError: (exception, stackTrace) {},
-                child: Image.asset(
-                  ImageAssets.profile,
-                  fit: BoxFit.cover,
-                  errorBuilder: (context, error, stackTrace) {
-                    return Icon(
-                      Icons.person,
-                      size: 30.sp,
-                      color: Colors.grey.shade600,
-                    );
-                  },
-                ),
+
+                // child: Image.asset(
+                //   ImageAssets.profile,
+                //   fit: BoxFit.cover,
+                //   errorBuilder: (context, error, stackTrace) {
+                //     return Icon(
+                //       Icons.person,
+                //       size: 32.sp,
+                //       color: Colors.grey.shade600,
+                //     );
+                //   },
+                // ),
+                
               ),
               SizedBox(width: 12.w),
+
               // Name, service, location
               Expanded(
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: .start,
                   children: [
                     // Name with verified icon
                     Row(
@@ -143,7 +146,7 @@ class _MyBookingsScreenState extends State<MyBookingsScreen>
                         ),
                       ],
                     ),
-                 AppSpacing.h4,
+                    AppSpacing.h4,
                     // Service type
                     Row(
                       children: [
@@ -170,7 +173,7 @@ class _MyBookingsScreenState extends State<MyBookingsScreen>
                         ),
                       ],
                     ),
-           
+
                     AppSpacing.h4,
                     // Date and time
                     Row(
