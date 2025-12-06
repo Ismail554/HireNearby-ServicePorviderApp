@@ -6,6 +6,7 @@ import 'package:hirenearby/core/assets_manager.dart';
 import 'package:hirenearby/core/font_manager.dart';
 import 'package:hirenearby/custom_widget/common_screen_setup.dart';
 import 'package:hirenearby/custom_widget/profile_info_card.dart';
+import 'package:hirenearby/view/client_user/home/bookings/my_bookings_screen.dart';
 import 'package:hirenearby/view/client_user/home/directory/confirm_booking_screen.dart';
 
 class SuccessScreen extends StatefulWidget {
@@ -69,7 +70,12 @@ class _SuccessScreenState extends State<SuccessScreen> {
           ),
           AppSpacing.h12,
           FilledButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => MyBookingsScreen()),
+              );
+            },
             child: Row(
               spacing: 6.w,
               mainAxisAlignment: .center,
